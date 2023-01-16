@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\Course;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Str;
@@ -16,28 +16,28 @@ class CartController extends Controller
     {
         $cart = session('cart', []);
 
-        $products = [];
+        $courses = [];
 
-        foreach ($cart as $productId => $id) {
-            $product = Product::find($productId);
-            $product->quantity = $id['quantity'];
-            array_push($products, $product);
+        foreach ($cart as $courseId => $id) {
+            $course = Course::find($courseId);
+            $course->quantity = $id['quantity'];
+            array_push($courses, $course);
         }
 
-        return view('cart.index', ['products' => $products]);
+        return view('cart.index', ['courses' => $courses]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Course $course)
     {
         $request->validate([
-            'quantity' => ['required', 'numeric', 'min:0', 'max:' . $product->stock],
+            'quantity' => ['required', 'numeric', 'min:0', 'max:' . $course->stock],
         ]);
 
         $cart = session()->get('cart', []);
         if ($request->quantity == 0) {
-            unset($cart[$product->id]);
+            unset($cart[$course->id]);
         } else {
-            $cart[$product->id]['quantity'] = $request->quantity;
+            $cart[$course->id]['quantity'] = $request->quantity;
         }
         session()->put('cart', $cart);
 
@@ -48,21 +48,21 @@ class CartController extends Controller
     {
         $cart = session('cart', []);
 
-        $products = [];
+        $courses = [];
 
-        foreach ($cart as $productId => $id) {
-            $product = Product::find($productId);
-            $product->quantity = $id['quantity'];
-            array_push($products, $product);
+        foreach ($cart as $courseId => $id) {
+            $course = Course::find($courseId);
+            $course->quantity = $id['quantity'];
+            array_push($courses, $course);
         }
-        if (count($products) == 0) {
+        if (count($courses) == 0) {
             return redirect('/cart');
         }
 
         $passcode = Str::random(6);
         session(['passcode' => $passcode]);
         return view('cart.checkout', [
-            'products' => $products,
+            'courses' => $courses,
             'passcode' => $passcode
         ]);
     }
@@ -83,13 +83,12 @@ class CartController extends Controller
 
         $cart = session('cart', []);
 
-        // Decrease the product's stock by the quantity in the cart.
-        foreach ($cart as $productId => $item) {
-            $product = Product::find($productId);
-            $product->stock -= $item['quantity'];
+        // Decrease the course's stock by the quantity in the cart.
+        foreach ($cart as $courseId => $item) {
+            $course = Course::find($courseId);
 
             // Save to database
-            $product->save();
+            $course->save();
         }
 
         // Create a new transaction
@@ -98,10 +97,10 @@ class CartController extends Controller
         $transaction->save();
 
         // Add the cart items to the transaction details
-        foreach ($cart as $productId => $item) {
+        foreach ($cart as $courseId => $item) {
             $transactionDetail = new TransactionDetail();
             $transactionDetail->transaction_id = $transaction->id;
-            $transactionDetail->product_id = $productId;
+            $transactionDetail->course_id = $courseId;
             $transactionDetail->quantity = $item['quantity'];
             $transactionDetail->save();
         }
@@ -110,6 +109,6 @@ class CartController extends Controller
         Session::forget('passcode');
 
         // Return to the homepage with a success message
-        return redirect('/transactions')->with('message', 'Transaction success! You will receive our products soon! Thank you for shopping with us!');
+        return redirect('/transactions')->with('message', 'Transaction success! You will receive our courses soon! Thank you for shopping with us!');
     }
 }

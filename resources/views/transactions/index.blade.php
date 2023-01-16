@@ -7,24 +7,24 @@
                 <table class="table table-striped mt-2">
                     <thead>
                         <tr>
-                            <th>Product</th>
+                            <th>Course</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Subtotal</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($transaction->products as $product)
+                        @foreach($transaction->courses as $course)
                         <tr>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="{{$product->picture}}" alt="{{$product->title}}" class="img-thumbnail cart-thumbnail me-3">
-                                    <p>{{ $product->name }}</p>
+                                    <img src="{{$course->picture}}" alt="{{$course->title}}" class="img-thumbnail cart-thumbnail me-3">
+                                    <p>{{ $course->name }}</p>
                                 </div>
                             </td>
-                            <td>IDR {{number_format($product->price)}}</td>
-                            <td>{{ $product->quantity }}</td>
-                            <td>IDR {{number_format($product->subtotal)}}</td>
+                            <td>IDR {{number_format($course->price)}}</td>
+                            <td>{{ $course->quantity }}</td>
+                            <td>IDR {{number_format($course->subtotal)}}</td>
                         </tr>
                         @endforeach
                     </tbody>

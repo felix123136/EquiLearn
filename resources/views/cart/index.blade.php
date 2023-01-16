@@ -6,11 +6,11 @@
     @enderror
     <div class="container my-5" style="min-height:53vh;">
         <h2 class="text-center mb-4">Shopping Cart</h2>
-        @if (count($products) > 0)
+        @if (count($courses) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Product</th>
+                    <th>Course</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Subtotal</th>
@@ -21,33 +21,33 @@
                 @php
                     $grandTotal = 0;
                 @endphp
-                @foreach($products as $product)
+                @foreach($courses as $course)
                 <tr>
-                    <form action="/cart/{{$product->id}}" method="POST">
+                    <form action="/cart/{{$course->id}}" method="POST">
                         @csrf
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="{{$product->picture}}" alt="{{$product->title}}" class="img-thumbnail cart-thumbnail me-3">
-                                <p>{{ $product->name }}</p>
+                                <img src="{{$course->picture}}" alt="{{$course->title}}" class="img-thumbnail cart-thumbnail me-3">
+                                <p>{{ $course->name }}</p>
                             </div>
                         </td>
-                        <td>IDR {{number_format($product->price)}}</td>
+                        <td>IDR {{number_format($course->price)}}</td>
                         <td>
                             <input
                                 type="hidden"
-                                name="productId"
-                                value="{{ $product->id }}"
+                                name="courseId"
+                                value="{{ $course->id }}"
                             />
                             <input
                                 type="number"
                                 name="quantity"
-                                value="{{ $product->quantity }}"
+                                value="{{ $course->quantity }}"
                                 class="form-control"
                                 style="width:75px;"
                             />
                         </td>
                         <td>
-                            IDR {{number_format($product->price * $product->quantity)}}
+                            IDR {{number_format($course->price * $course->quantity)}}
                         </td>
                         <td>
                             <button type="submit" class="btn btn-primary">
@@ -57,7 +57,7 @@
                     </form>
                 </tr>
                 @php
-                    $grandTotal += $product->price * $product->quantity;
+                    $grandTotal += $course->price * $course->quantity;
                 @endphp
                 @endforeach
             </tbody>
@@ -70,7 +70,7 @@
             Your cart is empty.
         </p>
         @endif
-        @if (count($products) > 0)
+        @if (count($courses) > 0)
         <div class="text-right mr-4 my-3 d-flex justify-content-between">
             <a href="/checkout" class="btn btn-primary">Checkout</a>
             <p><strong>Grand Total: IDR {{number_format($grandTotal)}}</strong></p>

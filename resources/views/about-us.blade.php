@@ -1,93 +1,30 @@
 <x-layout>
-    <div class="jumbotron jumbotron-fluid bg-light py-5">
-        <div class="container">
-            <h1 class="display-4">About Us</h1>
-            <p class="lead">
-                At Baktify, we are passionate about music and dedicated to bringing
-                the latest and greatest hits to our customers. With a wide selection
-                of albums, as well as a range of related products and services, we
-                are the go-to destination for all your music needs.
-            </p>
-        </div>
-    </div>
-    
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <img
-                    src="{{asset('assets/images/teamwork.jpg')}}"
-                    class="img-thumbnail"
-                    alt="Baktify team"
-                />
-            </div>
-            <div class="col-md-6 py-2 pb-5">
-                <h2>Our Team</h2>
-                <p>
-                    At Baktify, we have a team of dedicated and knowledgeable staff
-                    who are always on hand to help you find the perfect album or
-                    recommend new releases. We are passionate about music and
-                    committed to providing the best customer service possible.
-                </p>
-                <p>
-                    So whether you're a seasoned audiophile or just getting into
-                    music for the first time, we have something for everyone at
-                    Baktify.
-                </p>
-                <blockquote class="blockquote mt-5 mb-0">
-                    <p class="mb-3">
-                        "Music is a universal language that brings people together,
-                        and at Baktify, we are committed to bringing the best
-                        selection of music to our customers."
-                    </p>
-                    <footer class="blockquote-footer">Baktify CEO</footer>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-    
-    <div class="bg-light py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Our History</h2>
-            <p>
-                Baktify was founded in 2010 by a group of music enthusiasts who
-                wanted to create a one-stop-shop for all things music. From our
-                humble beginnings as a small record store in Jakarta, we have grown
-                to become a leading music retailer in Indonesia, with outlets across
-                the country.
-            </p>
-            <p>
-                We have always been dedicated to bringing the best selection of
-                music to our customers, and we are constantly expanding our range to
-                include the latest releases and hottest trends in the music
-                industry.
-            </p>
-        </div>
-    </div>
-    
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6">
+    <div class="text-white p-5" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/009/831/146/small/banner-web-template-abstract-blue-and-golden-wave-curved-lines-overlapping-layer-design-on-dark-blue-background-luxury-style-vector.jpg');">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center my-5">About EquiLearn</h1>
+            <p>At EquiLearn, we believe that true success in learning comes from achieving equilibrium – a balance between knowledge and skills, between hard work and rest, and between challenge and support. That's why we've designed our platform to provide you with a comprehensive and dynamic learning experience that will help you reach your full potential.</p>
+            <h2>Our Mission</h2>
+            <p>Our mission is to provide learners from all backgrounds with access to high-quality education that will help them reach their full potential. We strive to create a community of lifelong learners who are equipped with the knowledge and skills they need to succeed in their chosen fields.</p>
+            <h2>Our Team</h2>
+            <p>Our team is made up of dedicated educators, instructional designers, and technology experts who are passionate about creating an engaging and effective learning experience for our students. We're committed to staying on the cutting edge of educational technology and pedagogy, and to providing our students with the support they need to succeed.</p>
+            <h2>Our Values</h2>
+            <ul>
+              <li>Excellence in education</li>
+              <li>Diversity and inclusivity</li>
+              <li>Lifelong learning</li>
+              <li>Collaboration and community</li>
+              <li>Integrity and ethical behavior</li>
+            </ul>
+            <div class="contact-container">
                 <h2>Contact Us</h2>
-                <p>
-                    For inquiries or to get in touch with us, please use the
-                    following contact information:
-                </p>
-                <ul class="list-unstyled">
-                    <li>Phone: (123) 456-7890</li>
-                    <li>Email: info@baktify.com</li>
-                    <li>Address: 123 Main Street, Jakarta, Indonesia</li>
+                <p>If you have any questions or comments about EquiLearn, please don't hesitate to contact us. We're always happy to hear from our users and to help out in any way we can.</p>
+                <h3>Contact Information</h3>
+                <ul>
+                  <li>Email: info@equilearn.com</li>
+                  <li>Phone: (555) 555-5555</li>
+                  <li>Address: 123 Main St, Suite 100, Anytown USA 00000</li>
                 </ul>
             </div>
-            <div class="col-md-6">
-                <h2>Shop Locations</h2>
-                <p>We have outlets across Indonesia, so it's easy to find a Baktify store near you. See the list below for our shop locations:</p>
-                <ul class="list-unstyled">
-                    <li>Jakarta</li>
-                    <li>Surabaya</li>
-                    <li>Bandung</li>
-                    <li>Bali</li>
-                </ul>
-            </div>
+          </div>
         </div>
-    </div>    
 </x-layout>

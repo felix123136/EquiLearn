@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -30,13 +30,13 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert($admin);
 
-        $categories = ['Country', 'Dubstep', 'Electro'];
+        $categories = ['Coding', 'Web3/Blockchain', 'Design'];
         foreach ($categories as $category) {
             DB::table('categories')->insert([
                 'name' => $category
             ]);
         }
 
-        Product::factory(20)->create();
+        Course::factory(20)->create();
     }
 }

@@ -2,8 +2,8 @@
     <div class="container p-5 rounded mt-5">
         <div class="row">
             <div class="col-md-6 mx-auto bg-light card p-5">
-                <h2 class="text-center mb-4">Add Product</h2>
-                <form method="POST" action="/products" enctype="multipart/form-data">
+                <h2 class="text-center mb-4">Add Course</h2>
+                <form method="POST" action="/courses" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-4">
                         <label class="mb-3" for="picture">Image</label>
@@ -13,7 +13,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-4">
-                        <label class="mb-3" for="name">Product Name</label>
+                        <label class="mb-3" for="name">Course Name</label>
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                         @error('name')
                             <div class="text-danger mt-1">{{ $message }}</div>
@@ -34,13 +34,6 @@
                         @enderror
                     </div>
                     <div class="form-group mb-4">
-                        <label class="mb-3" for="stock">Product Quantity</label>
-                        <input type="number" class="form-control" name="stock" value="{{ old('stock') }}">
-                        @error('stock')
-                            <div class="text-danger mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group mb-4">
                         <label class="mb-3" for="category">Category Name</label>
                         <select name="category_id" class="form-control">
                             @foreach ($categories as $category)
@@ -48,7 +41,7 @@
                             @endforeach
                         </select>
                         <small class="form-text text-muted">
-                            Choose a category for your product.
+                            Choose a category for your course.
                         </small>
                         @error('category')
                             <div class="text-danger mt-1">{{ $message }}</div>
@@ -58,7 +51,7 @@
                         <button class="btn btn-primary me-2" type="submit">
                             Insert
                         </button>
-                        <a href="/products" class="btn btn-danger me-3">Cancel</a>
+                        <a href="/courses" class="btn btn-danger me-3">Cancel</a>
                     </div>
                 </form>
             </div>

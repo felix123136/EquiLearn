@@ -3,8 +3,8 @@
     margin: 0;
 }
 
-.product-card-title:hover {
-    text-decoration: underline !important;
+body {
+    background-color: rgb(0, 0, 0);
 }
 
 .cart-thumbnail {

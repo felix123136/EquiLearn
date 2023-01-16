@@ -13,7 +13,7 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
-    <title>Baktify</title>
+    <title>EquiLearn</title>
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>

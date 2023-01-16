@@ -4,7 +4,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Product</th>
+                    <th>Course</th>
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Subtotal</th>
@@ -14,36 +14,36 @@
                 @php
                     $grandTotal = 0;
                 @endphp
-                @foreach($products as $product)
+                @foreach($courses as $course)
                 <tr>
                     <td>
                         <div class="d-flex align-items-center">
-                            <img src="{{$product->picture}}" alt="{{$product->title}}" class="img-thumbnail cart-thumbnail me-3">
-                            <p>{{ $product->name }}</p>
+                            <img src="{{$course->picture}}" alt="{{$course->title}}" class="img-thumbnail cart-thumbnail me-3">
+                            <p>{{ $course->name }}</p>
                         </div>
                     </td>
-                    <td>IDR {{ $product->price }}</td>
+                    <td>IDR {{ $course->price }}</td>
                     <td>
                         <input
                             type="hidden"
-                            name="productId"
-                            value="{{ $product->id }}"
+                            name="courseId"
+                            value="{{ $course->id }}"
                         />
                         <input
                             type="number"
                             name="quantity"
-                            value="{{ $product->quantity }}"
+                            value="{{ $course->quantity }}"
                             class="form-control"
                             style="width:75px;"
                             disabled
                         />
                     </td>
                     <td>
-                        IDR {{number_format($product->price * $product->quantity)}}
+                        IDR {{number_format($course->price * $course->quantity)}}
                     </td>
                 </tr>
                 @php
-                    $grandTotal += $product->price * $product->quantity;
+                    $grandTotal += $course->price * $course->quantity;
                 @endphp
                 @endforeach
             </tbody>

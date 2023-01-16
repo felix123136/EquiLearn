@@ -4,7 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,28 +24,28 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about-us', [HomeController::class, 'aboutUs']);
 
-Route::get('/products', [ProductController::class, 'index']);
+Route::get('/courses', [CourseController::class, 'index']);
 
 // Show Create Form
-Route::get('/products/new', [ProductController::class, 'create'])->middleware('admin');
+Route::get('/courses/new', [CourseController::class, 'create'])->middleware('admin');
 
-// Store Product Data
-Route::post('/products', [ProductController::class, 'store'])->middleware('admin');
+// Store Course Data
+Route::post('/courses', [CourseController::class, 'store'])->middleware('admin');
 
 // Show Edit Form
-Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->middleware('admin');
+Route::get('/courses/{course}/edit', [CourseController::class, 'edit'])->middleware('admin');
 
-// Update Product
-Route::put('/products/{product}', [ProductController::class, 'update'])->middleware('admin');
+// Update Course
+Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware('admin');
 
-// Delete Product
-Route::delete('/products/{product}', [ProductController::class, 'delete'])->middleware('admin');
+// Delete Course
+Route::delete('/courses/{course}', [CourseController::class, 'delete'])->middleware('admin');
 
-// Show single product
-Route::get('/products/{product}', [ProductController::class, 'show']);
+// Show single course
+Route::get('/courses/{course}', [CourseController::class, 'show']);
 
-// Add Product to Cart
-Route::post('/products/{product}/add-to-cart', [ProductController::class, 'addToCart'])->name('products.add-to-cart')->middleware('member');
+// Add Course to Cart
+Route::post('/courses/{course}/add-to-cart', [CourseController::class, 'addToCart'])->name('courses.add-to-cart')->middleware('member');
 
 // Show Add Category Form
 Route::get('/categories/new', [CategoryController::class, 'create'])->middleware('admin');
@@ -81,7 +81,7 @@ Route::put('/users/{user}', [UserController::class, 'update'])->middleware('auth
 Route::get('/cart', [CartController::class, 'index'])->middleware('member');
 
 // Update Cart Value
-Route::post('/cart/{product}', [CartController::class, 'update'])->middleware('member');
+Route::post('/cart/{course}', [CartController::class, 'update'])->middleware('member');
 
 // Show Checkout Page
 Route::get('/checkout', [CartController::class, 'checkout'])->middleware('member');

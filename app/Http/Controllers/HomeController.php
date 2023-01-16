@@ -15,7 +15,7 @@ class HomeController extends Controller
                 "title" => "Direct Container Sourcing",
                 "description" => "By sourcing our containers directly from
                 manufacturers, we are able to offer the highest
-                quality products at competitive prices."
+                quality courses at competitive prices."
             ],
             [
                 "imageUrl" => "assets/images/flexible-payment.jpg",
@@ -30,7 +30,7 @@ class HomeController extends Controller
                 "imageAlt" => "Music and More",
                 "title" => "Music and More",
                 "description" => "At Baktify, we don't just sell music - we also offer
-                a wide range of related products and services,
+                a wide range of related courses and services,
                 including headphones, turntables, and more."
             ]
         ];
