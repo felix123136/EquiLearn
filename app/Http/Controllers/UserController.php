@@ -101,4 +101,12 @@ class UserController extends Controller
 
         return redirect('/users/' . $user->id)->with('message', 'Profile updated successfully');
     }
+
+    public function mycourses(User $user)
+    {
+        $courses = $user->courses()->orderBy('created_at', 'desc')->filter(request(['category', 'search']))->paginate(12);
+        return view('users.courses', [
+            'courses' => $courses
+        ]);
+    }
 }

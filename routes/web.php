@@ -91,3 +91,6 @@ Route::post('/checkout/confirm', [CartController::class, 'confirm'])->middleware
 
 // Show Transaction Page
 Route::get('/transactions', [TransactionController::class, 'index'])->middleware('member');
+
+// Show user's courses
+Route::get('/my-courses/{user}', [UserController::class, 'mycourses'])->middleware('member');

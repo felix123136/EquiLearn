@@ -11,7 +11,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+        $transactions = Transaction::where('user_id', auth()->user()->id)->latest()->get();
 
         foreach ($transactions as $transaction) {
             $transactionDetails = TransactionDetail::where('transaction_id', $transaction->id)->get();

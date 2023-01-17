@@ -47,7 +47,7 @@
                     @error('passcode')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
-                    <div class="d-grid gap-2 mt-4 mb-5">
+                    <div class="d-grid gap-2 my-4">
                         <button type="submit" class="btn btn-primary">Confirm</button>
                     </div>
                 </form>

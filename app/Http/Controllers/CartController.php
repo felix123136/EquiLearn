@@ -87,6 +87,12 @@ class CartController extends Controller
             $transactionDetail->save();
         }
 
+        //Add the cart items to the user_courses table
+        foreach ($cart as $courseId => $item) {
+            $user = Auth::user();
+            $user->courses()->attach($courseId);
+        }
+
         Session::forget('cart');
         Session::forget('passcode');
 

@@ -37,7 +37,7 @@
                         <label class="mb-3" for="category">Category Name</label>
                         <select name="category_id" class="form-control">
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option class="text-black" value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                         <small class="form-text text-muted">
