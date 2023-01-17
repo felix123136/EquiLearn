@@ -6,8 +6,6 @@
                 <tr>
                     <th>Course</th>
                     <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,28 +20,10 @@
                             <p>{{ $course->name }}</p>
                         </div>
                     </td>
-                    <td>IDR {{ $course->price }}</td>
-                    <td>
-                        <input
-                            type="hidden"
-                            name="courseId"
-                            value="{{ $course->id }}"
-                        />
-                        <input
-                            type="number"
-                            name="quantity"
-                            value="{{ $course->quantity }}"
-                            class="form-control"
-                            style="width:75px;"
-                            disabled
-                        />
-                    </td>
-                    <td>
-                        IDR {{number_format($course->price * $course->quantity)}}
-                    </td>
+                    <td class="text-white">IDR {{ number_format($course->price) }}</td>
                 </tr>
                 @php
-                    $grandTotal += $course->price * $course->quantity;
+                    $grandTotal += $course->price;
                 @endphp
                 @endforeach
             </tbody>
@@ -67,7 +47,7 @@
                     @error('passcode')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
-                    <div class="d-grid gap-2 mt-4">
+                    <div class="d-grid gap-2 mt-4 mb-5">
                         <button type="submit" class="btn btn-primary">Confirm</button>
                     </div>
                 </form>

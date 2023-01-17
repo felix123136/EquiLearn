@@ -80,8 +80,8 @@ Route::put('/users/{user}', [UserController::class, 'update'])->middleware('auth
 // Show Cart Page
 Route::get('/cart', [CartController::class, 'index'])->middleware('member');
 
-// Update Cart Value
-Route::post('/cart/{course}', [CartController::class, 'update'])->middleware('member');
+// Delete Cart Value
+Route::post('/cart/{course}', [CartController::class, 'delete'])->middleware('member');
 
 // Show Checkout Page
 Route::get('/checkout', [CartController::class, 'checkout'])->middleware('member');

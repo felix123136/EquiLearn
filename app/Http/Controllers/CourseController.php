@@ -95,13 +95,8 @@ class CourseController extends Controller
         $cart = session()->get('cart', []);
         $item = [
             'id' => $course->id,
-            'quantity' => 1
         ];
-        if (isset($cart[$course->id])) {
-            $cart[$course->id]['quantity']++;
-        } else {
-            $cart[$course->id] = $item;
-        }
+        $cart[$course->id] = $item;
         session()->put('cart', $cart);
 
         return redirect()->back()->with('message', 'Course added to cart!');

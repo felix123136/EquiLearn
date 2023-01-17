@@ -20,28 +20,19 @@ class CartController extends Controller
 
         foreach ($cart as $courseId => $id) {
             $course = Course::find($courseId);
-            $course->quantity = $id['quantity'];
             array_push($courses, $course);
         }
 
         return view('cart.index', ['courses' => $courses]);
     }
 
-    public function update(Request $request, Course $course)
+    public function delete(Request $request, Course $course)
     {
-        $request->validate([
-            'quantity' => ['required', 'numeric', 'min:0', 'max:' . $course->stock],
-        ]);
-
         $cart = session()->get('cart', []);
-        if ($request->quantity == 0) {
-            unset($cart[$course->id]);
-        } else {
-            $cart[$course->id]['quantity'] = $request->quantity;
-        }
+        unset($cart[$course->id]);
         session()->put('cart', $cart);
 
-        return redirect()->back()->with('message', 'Shopping cart updated!');
+        return redirect()->back()->with('message', 'Course successfully removed!');
     }
 
     public function checkout()
@@ -52,9 +43,9 @@ class CartController extends Controller
 
         foreach ($cart as $courseId => $id) {
             $course = Course::find($courseId);
-            $course->quantity = $id['quantity'];
             array_push($courses, $course);
         }
+
         if (count($courses) == 0) {
             return redirect('/cart');
         }
@@ -83,14 +74,6 @@ class CartController extends Controller
 
         $cart = session('cart', []);
 
-        // Decrease the course's stock by the quantity in the cart.
-        foreach ($cart as $courseId => $item) {
-            $course = Course::find($courseId);
-
-            // Save to database
-            $course->save();
-        }
-
         // Create a new transaction
         $transaction = new Transaction();
         $transaction->user_id = Auth::user()->id;
@@ -101,7 +84,6 @@ class CartController extends Controller
             $transactionDetail = new TransactionDetail();
             $transactionDetail->transaction_id = $transaction->id;
             $transactionDetail->course_id = $courseId;
-            $transactionDetail->quantity = $item['quantity'];
             $transactionDetail->save();
         }
 
@@ -109,6 +91,6 @@ class CartController extends Controller
         Session::forget('passcode');
 
         // Return to the homepage with a success message
-        return redirect('/transactions')->with('message', 'Transaction success! You will receive our courses soon! Thank you for shopping with us!');
+        return redirect('/transactions')->with('message', "Transaction completed! Enjoy your course and don't hesitate to reach out for support. Thank you for choosing us.");
     }
 }

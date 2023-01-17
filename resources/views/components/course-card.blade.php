@@ -22,10 +22,14 @@
                 <button onclick="alertAndRedirectToLoginPage()" class="btn btn-primary">Add to Cart</button>
                 <a href="/courses/{{$course->id}}" class="btn btn-outline-primary">Course Details</a>
             @else
-                <form action="/courses/{{$course->id}}/add-to-cart" method="post">
-                    @csrf
-                    <button class="btn btn-primary">Add to Cart</button>
-                </form>
+                @if(session()->has('cart.' . $course->id))
+                    <a href="/cart" class="btn btn-outline-light">Go To Cart</a>
+                @else
+                    <form action="/courses/{{$course->id}}/add-to-cart" method="post">
+                        @csrf
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </form>
+                @endif
                 <a href="/courses/{{$course->id}}" class="btn btn-outline-primary">Course Details</a>
             @endguest
         @endif

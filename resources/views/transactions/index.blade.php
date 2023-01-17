@@ -9,8 +9,6 @@
                         <tr>
                             <th>Course</th>
                             <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Subtotal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,14 +20,12 @@
                                     <p>{{ $course->name }}</p>
                                 </div>
                             </td>
-                            <td>IDR {{number_format($course->price)}}</td>
-                            <td>{{ $course->quantity }}</td>
-                            <td>IDR {{number_format($course->subtotal)}}</td>
+                            <td class="text-white">IDR {{number_format($course->price)}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <h3 class="text-end"><strong>IDR {{number_format($transaction->grandTotal)}}</strong></h3>
+                <h3 class="text-end mb-5"><strong>IDR {{number_format($transaction->grandTotal)}}</strong></h3>
             @endforeach
         @else
         <p

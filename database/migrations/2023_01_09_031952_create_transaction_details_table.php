@@ -17,7 +17,6 @@ class CreateTransactionDetailsTable extends Migration
             $table->id();
             $table->foreignId('transaction_id')->constrained()->onDelete('cascade');
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
-            $table->integer('quantity');
             $table->timestamps();
         });
     }

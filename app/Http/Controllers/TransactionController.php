@@ -19,9 +19,7 @@ class TransactionController extends Controller
             $grandTotal = 0;
             foreach ($transactionDetails as $transactionDetail) {
                 $course = Course::find($transactionDetail->course_id);
-                $course->quantity = $transactionDetail->quantity;
-                $course->subtotal = $course->quantity * $course->price;
-                $grandTotal += $course->subtotal;
+                $grandTotal += $course->price;
                 array_push($courses, $course);
             }
             $transaction['grandTotal'] = $grandTotal;

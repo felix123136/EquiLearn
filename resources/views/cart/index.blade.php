@@ -1,19 +1,12 @@
 <x-layout>
-    @error('quantity')
-        @php
-            Session::flash('error', $message);
-        @endphp        
-    @enderror
-    <div class="container my-5" style="min-height:53vh;">
+    <div class="container my-5 text-white" style="min-height:53vh;">
         <h2 class="text-center mb-4">Shopping Cart</h2>
         @if (count($courses) > 0)
-        <table class="table table-striped">
+        <table class="table table-striped text-white">
             <thead>
                 <tr>
                     <th>Course</th>
                     <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
                     <th></th>
                 </tr>
             </thead>
@@ -31,33 +24,16 @@
                                 <p>{{ $course->name }}</p>
                             </div>
                         </td>
-                        <td>IDR {{number_format($course->price)}}</td>
+                        <td class="text-white">IDR {{number_format($course->price)}}</td>
                         <td>
-                            <input
-                                type="hidden"
-                                name="courseId"
-                                value="{{ $course->id }}"
-                            />
-                            <input
-                                type="number"
-                                name="quantity"
-                                value="{{ $course->quantity }}"
-                                class="form-control"
-                                style="width:75px;"
-                            />
-                        </td>
-                        <td>
-                            IDR {{number_format($course->price * $course->quantity)}}
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-primary">
-                                Update Cart
+                            <button type="submit" class="btn btn-danger">
+                                Remove From Cart
                             </button>
                         </td>
                     </form>
                 </tr>
                 @php
-                    $grandTotal += $course->price * $course->quantity;
+                    $grandTotal += $course->price;
                 @endphp
                 @endforeach
             </tbody>
