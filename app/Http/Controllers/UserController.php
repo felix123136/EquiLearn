@@ -30,7 +30,9 @@ class UserController extends Controller
         // Create User
         $user = User::create($formFields);
 
-        return redirect('/login')->with('message', 'Account successfully created');
+        auth()->login($user);
+
+        return redirect('/courses')->with('message', 'Account successfully created');
     }
 
     // Show Login Form
@@ -52,7 +54,7 @@ class UserController extends Controller
         }
 
         if (auth()->attempt($formFields)) {
-            return redirect('/')->with('message', 'You are now logged in')->withCookie($emailCookie);
+            return redirect('/courses')->with('message', 'You are now logged in')->withCookie($emailCookie);
         }
         return back()->withErrors(['email' => 'Invalid Credentials'])->withInput(request()->only('email'));
     }

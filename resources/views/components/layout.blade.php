@@ -14,7 +14,7 @@
         referrerpolicy="no-referrer"
     />
     <title>EquiLearn</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href={{asset('assets/styles.css')}}>
 </head>
 <body>
     @include('partials.navigation')

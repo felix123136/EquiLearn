@@ -48,7 +48,7 @@
                 @if(count($query) == 0)
                     <p class="mb-5">No Courses Found</p>
                 @else
-                    <p class="mb-5" style="min-height:17vh;">No Course Match for '{{$query['search']}}'</p>
+                    <p class="mb-5 text-white" style="min-height:17vh;">No Course Match for '{{$query['search']}}'</p>
                 @endif
             @endunless
         </div>

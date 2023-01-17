@@ -1,6 +1,6 @@
 <x-layout>
     <div class="row" style="min-height: 65vh">
-        <div class="mx-auto col-md-6">
+        <div class="mx-auto col-md-6 text-white">
             @foreach ($categories as $category)
             <span class="bg-primary text-white rounded me-3 p-2 mt-5 d-inline-block">{{ $category->name }}</span>
             @endforeach

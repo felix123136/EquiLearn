@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container p-5 rounded mt-5">
         <div class="row">
-            <div class="col-md-6 mx-auto bg-light card p-5">
+            <div class="col-md-6 mx-auto bg-dark text-white card p-5">
                 <h2 class="text-center mb-4">Edit Course</h2>
                 <form method="POST" action="/courses/{{$course->id}}" enctype="multipart/form-data">
                     @csrf
@@ -20,8 +20,10 @@
                     </div>
                     <div class="form-group mb-4">
                         <label class="mb-3" for="name">Course Name</label>
-                        <input type="text" class="form-control text-muted" name="name" value="{{ $course->name }}" disabled>
-                        <input type="hidden" class="form-control text-muted" name="name" value="{{ $course->name }}">
+                        <input type="text" class="form-control" name="name" value="{{ $course->name }}">
+                        @error('name')
+                            <div class="text-danger mt-1">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="mb-3" for="description">Description</label>
@@ -39,8 +41,11 @@
                     </div>
                     <div class="form-group mb-4">
                         <label class="mb-3" for="category">Category Name</label>
-                        <input type="text" class="form-control text-muted" name="category" value="{{ $course->category->name }}" disabled>
-                        <input type="hidden" class="form-control text-muted" name="category_id" value="{{ $course->category->id }}">
+                        <select name="category_id" class="form-control">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                         @error('category')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror

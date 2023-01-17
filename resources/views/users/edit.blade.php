@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container p-5 rounded mt-5">
         <div class="row">
-            <div class="col-md-6 mx-auto bg-light card p-5">
+            <div class="col-md-6 mx-auto bg-dark text-white card p-5">
                 <h2 class="text-center mb-4">Update your profile</h2>
                 <form method="POST" action="/users/{{$user->id}}" enctype="multipart/form-data">
                     @csrf

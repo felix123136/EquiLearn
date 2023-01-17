@@ -57,6 +57,7 @@ class CourseController extends Controller
     {
         return view('courses.edit', [
             'course' => $course,
+            'categories' => Category::all()
         ]);
     }
 
@@ -68,11 +69,14 @@ class CourseController extends Controller
             'description' => ['required', 'min:15', 'max:500'],
             'category_id' => ['required'],
             'price' => ['required', 'integer', 'min:1000', 'max:10000000'],
-            'picture' => ['required', 'mimes:jpeg,jpg,png']
+            'picture' => ['mimes:jpeg,jpg,png']
         ]);
-
-        $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
-        $formFields['picture'] = 'storage/' . $formFields['picture'];
+        if ($request->hasFile('picture')) {
+            $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
+            $formFields['picture'] = 'storage/' . $formFields['picture'];
+        } else {
+            $formFields['picture'] = $course->picture;
+        }
 
         $course->update($formFields);
 
