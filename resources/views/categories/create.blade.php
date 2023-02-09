@@ -7,9 +7,9 @@
             <h2 class="text-center my-5">Add New Category</h2>
             <form class="mb-5" method="POST" action="/categories">
                 @csrf
-                <div class="form-group mb-4">
-                    <label class="mb-3" for="name">Category Name</label>
+                <div class="form-floating mb-4">
                     <input type="text" class="form-control" id="name" name="name" />
+                    <label class="mb-3 text-muted" for="name">Category Name</label>
                     @error('name')
                         <div class="text-danger mt-1">{{ $message }}</div>
                     @enderror
