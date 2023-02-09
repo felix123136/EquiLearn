@@ -6,40 +6,39 @@
                 <form method="POST" action="/courses" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-4">
-                        <label class="mb-3" for="picture">Image</label>
                         <input type="file" class="form-control" name="picture">
                         @error('picture')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="name">Course Name</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="name">
+                        <label class="mb-3 text-muted" for="name">Course Name</label>
                         @error('name')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="description">Description</label>
-                        <textarea class="form-control" name="description">{{ old('description') }}</textarea>
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control" name="description" placeholder="description">{{ old('description') }}</textarea>
+                        <label class="mb-3 text-muted" for="description">Description</label>
                         @error('description')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="price">Price</label>
-                        <input type="text" class="form-control" name="price" value="{{ old('price') }}">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="price" value="{{ old('price') }}" placeholder="price">
+                        <label class="mb-3 text-muted" for="price">Price</label>
                         @error('price')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="category">Category Name</label>
+                    <div class="form-floating mb-4">
                         <select name="category_id" class="form-control">
                             @foreach ($categories as $category)
                                 <option class="text-black" value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        <label class="mb-3 text-muted" for="category">Category Name</label>
                         <small class="form-text text-muted">
                             Choose a category for your course.
                         </small>

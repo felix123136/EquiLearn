@@ -7,7 +7,6 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group mb-4">
-                        <label class="mb-3 mt-2" for="picture">Image</label>
                         <img
                             class="w-48 mr-6 mb-3 img-fluid"
                             src="{{ asset($course->picture) }}"
@@ -18,34 +17,34 @@
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="name">Course Name</label>
-                        <input type="text" class="form-control" name="name" value="{{ $course->name }}">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="name" value="{{ $course->name }}" placeholder="name">
+                        <label class="mb-3 text-muted" for="name">Course Name</label>
                         @error('name')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="description">Description</label>
-                        <textarea class="form-control" name="description">{{ $course->description }}</textarea>
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control" name="description" placeholder="description">{{ $course->description }}</textarea>
+                        <label class="mb-3 text-muted" for="description">Description</label>
                         @error('description')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="price">Price</label>
-                        <input type="text" class="form-control" name="price" value="{{ $course->price }}">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="price" value="{{ $course->price }}" placeholder="price">
+                        <label class="mb-3 text-muted" for="price">Price</label>
                         @error('price')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="category">Category Name</label>
+                    <div class="form-floating mb-4">
                         <select name="category_id" class="form-control">
                             @foreach ($categories as $category)
                                 <option class="text-black" value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        <label class="mb-3 text-muted" for="category">Category Name</label>
                         @error('category')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
