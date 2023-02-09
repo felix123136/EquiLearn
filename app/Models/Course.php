@@ -20,8 +20,10 @@ class Course extends Model
     public function scopeFilter($query, array $filters)
     {
         if ($filters['category'] ?? false) {
-            $query->join('categories', 'categories.id', '=', 'courses.category_id')
-                ->where('categories.name', request('category'));
+            $category = Category::where('name', $filters['category'])->first();
+            if ($category) {
+                $query->where('category_id', '=', $category->id);
+            }
         }
 
         if ($filters['search'] ?? false) {

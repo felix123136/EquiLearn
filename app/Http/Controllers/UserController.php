@@ -104,9 +104,10 @@ class UserController extends Controller
 
     public function mycourses(User $user)
     {
-        $courses = $user->courses()->orderBy('created_at', 'desc')->filter(request(['category', 'search']))->paginate(12);
+        $courses = $user->courses()->filter(request(['category', 'search']))->paginate(12);
         return view('users.courses', [
-            'courses' => $courses
+            'courses' => $courses,
+            'query' => request(['search'])
         ]);
     }
 }

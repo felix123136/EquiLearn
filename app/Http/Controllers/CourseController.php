@@ -43,6 +43,7 @@ class CourseController extends Controller
             'price' => ['required', 'integer', 'min:1000', 'max:10000000'],
             'picture' => ['required', 'mimes:jpeg,jpg,png']
         ]);
+
         $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
 
         $formFields['picture'] = 'storage/' . $formFields['picture'];
