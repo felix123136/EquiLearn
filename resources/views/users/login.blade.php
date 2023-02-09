@@ -8,20 +8,20 @@
                 <h2 class="text-center mb-4">Sign in to your account</h2>
                 <form method="POST" action="/users/authenticate" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="email">Email address</label>
+                    <div class="form-floating mb-4">
                         @if(Cookie::has('email'))
-                            <input type="email" class="form-control" name="email" value="{{ Cookie::get('email') }}">
+                            <input type="email" class="form-control" name="email" id="email" value="{{ Cookie::get('email') }}" placeholder="email">
                         @else
-                            <input type="email" class="form-control" name="email" value="{{ old('email')  }}">
+                            <input type="email" class="form-control" name="email" id="email" value="{{ old('email')  }}" placeholder="email">
                         @endif
+                        <label class="mb-3 text-muted" for="email">Email address</label>
                         @error('email')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="password">Password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password">
+                        <label class="mb-3 text-muted" for="password">Password</label>
                         @error('password')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror

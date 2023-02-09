@@ -5,45 +5,45 @@
                 <h2 class="text-center mb-4">Create your account</h2>
                 <form method="POST" action="/users" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="name">Name</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="name">
+                        <label class="mb-3 text-muted" for="name">Name</label>
                         @error('name')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="email">Email address</label>
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                    <div class="form-floating mb-4">
+                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="email">
+                        <label class="mb-3 text-muted" for="email">Email address</label>
                         @error('email')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="password">Password</label>
-                        <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="password">
+                        <label class="mb-3 text-muted" for="password">Password</label>
                         @error('password')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="password_confirmation">Confirm Password</label>
-                        <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="password_confirmation">
+                        <label class="mb-3 text-muted" for="password_confirmation">Confirm Password</label>
                         @error('password_confirmation')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="address">Address</label>
-                        <textarea class="form-control" name="address">{{ old('address') }}</textarea>
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control" name="address" placeholder="Address">{{ old('address') }}</textarea>
+                        <label class="mb-3 text-muted" for="address">Address</label>
                         <small class="text-muted">Please write your actual address where you can receive mail</small>
                         @error('address')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="phone">Phone</label>
-                        <input type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="phone">
+                        <label class="mb-3 text-muted" for="phone">Phone</label>
                         @error('phone')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror

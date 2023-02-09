@@ -4,25 +4,25 @@
             <div class="col-md-6 mx-auto bg-dark text-white card p-5">
                 <h2 class="text-center mb-4">Your Profile</h2>
                 <form>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="name">Name</label>
+                    <div class="form-floating mb-4">
                         <input type="text" class="form-control" name="name" value="{{ $user->name }}" disabled>
+                        <label class="mb-3 text-muted" for="name">Name</label>
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="email">Email address</label>
+                    <div class="form-floating mb-4">
                         <input type="email" class="form-control" name="email" value="{{ $user->email }}" disabled>
+                        <label class="mb-3 text-muted" for="email">Email address</label>
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="password">Password</label>
+                    <div class="form-floating mb-4">
                         <input type="password" class="form-control" name="password" value="************" disabled>
+                        <label class="mb-3 text-muted" for="password">Password</label>
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="address">Address</label>
+                    <div class="form-floating mb-4">
                         <textarea class="form-control" name="address" disabled>{{ $user->address }}</textarea>
+                        <label class="mb-3 text-muted" for="address">Address</label>
                     </div>
-                    <div class="form-group mb-4">
-                        <label class="mb-3" for="phone">Phone</label>
+                    <div class="form-floating mb-4">
                         <input type="text" class="form-control" name="phone" value="{{ $user->phone }}" disabled>
+                        <label class="mb-3 text-muted" for="phone">Phone</label>
                     </div>
                 </form>
                 <div class="mt-2 d-flex justify-content-end">
